@@ -1,0 +1,11 @@
+>>> from task1.models import Buyer
+>>> buyer1 = Buyer.objects.create(name='Ilya', balance=1500.05, age=24)
+>>> buyer2 = Buyer.objects.create(name='Terminator2000', balance=42.15, age=52)
+>>> buyer3 = Buyer.objects.create(name='Ubivator432', balance=0.5, age=16)
+>>> from task1.models import Game
+>>> game1 = Game.objects.create(title='Cyberpunk 2077', cost=31, size=46.2, description='Game of the year 1', age_limited=1)
+>>> game2 = Game.objects.create(title='Mario', cost=5, size=5, description='Old Game', age_limited=0)
+>>> game3 = Game.objects.create(title='Hitman', cost=12, size=36.6, description='Who Kills Mark', age_limited=1)
+>>> game1.buyers.set([buyer1, buyer2, buyer3])
+>>> game3.buyers.set([buyer1, buyer2])
+>>> game2.buyers.set([buyer1, buyer2, buyer3])
