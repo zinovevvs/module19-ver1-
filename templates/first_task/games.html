@@ -1,22 +1,39 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Магазин</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игры</title>
 </head>
 <body>
-    <h1>Магазин</h1>
-        {% extends 'first_task/menu.html' %} {% block pagename %}{{ pagename }}{% endblock %}
-{% block content %}
-    <ul>
-        {% if games %}
+    <header>
+        <h1>Игры</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/shop/">Магазин</a></li>
+                <li><a href="/cart/">Корзина</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Список игр:</h2>
+        <ul>
             {% for game in games %}
-                <li>{{ game }} <a href="{% url 'games' %}">Купить</a></li>
+                <li>
+                    <strong>{{ game.title }}</strong> | {{ game.description }}.
+                    Стоимость: {{ game.cost }}
+                    <button>Купить</button>
+                </li>
+            {% empty %}
+                <li>Игры не найдены.</li>
             {% endfor %}
-        {% else %}
-            <li>Игры отсутствуют.</li>
-        {% endif %}
-    </ul>
-{% endblock %}
+        </ul>
+    </main>
 </body>
 </html>
+
+
+
