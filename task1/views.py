@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UserRegister
 from django.http import HttpResponse
-from .models import Buyer, Game
+from .models import Buyer, Game, News
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib import messages
@@ -104,4 +104,25 @@ def sign_up_by_html(request):
     return registration_view(request)
 # def sign_up_by_html(request):
 #     return sign_up_by_django(request)
+
+
+def all_articles(request):
+    all_posts = News.objects.all()
+    return render(request, 'first_task/menu.html', {'articles': all_posts})
+
+
+def delete_article(request, id):
+    post = News.objects.get(id=id)
+    post.delete()
+    return redirect('first_task/menu.html')
+
+
+def filter_published_articles(request):
+    published_posts = News.objects.filter(created_at__year=2024)
+    return render(request, 'first_task/menu.html', {'articles': published_posts})
+
+
+def filter_admin_articles(request):
+    admin_posts = News.objects.filter(created_by__username='admin_username')
+    return render(request, 'first_task/menu.html', {'articles': admin_posts})
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE items>
+<items>
+    <row>
+       <id>1</id>
+       <title>Первая статья</title>
+       <content>Погода</content>
+       <published_date>2024-01-01</published_date>
+       <author>admin</author>
+    </row>
+    <row>
+       <id>2</id>
+       <title>Вторая статья</title>
+       <content>Авария</content>
+       <published_date>2024-02-01</published_date>
+       <author>hervr</author>
+    </row>
+    <row>
+       <id>3</id>
+       <title>Третья статья</title>
+       <content>Создание</content>
+       <published_date>2024-03-01</published_date>
+       <author>gt</author>
+    </row>
+</items>
