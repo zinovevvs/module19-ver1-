@@ -11,7 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def post_list(request):
     posts = Post.objects.all()
     paginator = Paginator(posts, 3)
-    page_number = request.GET.get('page')
+    page_number = request.GET.get('post/')
 
     try:
         page_posts = paginator.get_page(page_number)
@@ -20,7 +20,7 @@ def post_list(request):
     except EmptyPage:
         page_posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'first_task/post_list.html', {'page_posts': page_posts})
+    return render(request, 'first_task/post_list.html', {'posts/': page_posts})
 
 
 # def registration_view(request):

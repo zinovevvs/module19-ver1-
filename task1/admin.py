@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, News
+from .models import *
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -10,5 +10,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'published', 'category')
     search_fields = ('title',)
+
+admin.site.register(Post)
+
+
 
 # Register your models here.
