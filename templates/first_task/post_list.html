@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +9,9 @@
 
     <h1>Список постов</h1>
 
-    {% if posts %}
+    {% if page_post %}
         <ul>
-            {% for post in posts %}
+            {% for post in page_post %}
                 <li>
                     <h2>{{ post.title }}</h2>
                     <p>{{ post.content }}</p>
@@ -18,16 +19,16 @@
             {% endfor %}
         </ul>
         <div class="pagination">
-            {% if page_obj.has_previous %}
+            {% if page_post.has_previous %}
                 <a href="?page=1">&laquo; Первый</a>
-                <a href="?page={{ page_obj.previous_page_number }}">Предыдущий</a>
+                <a href="?page={{ page_post.previous_page_number }}">Предыдущий</a>
             {% endif %}
 
-            <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+            <span>Страница {{ page_post.number }} из {{ page_post.paginator.num_pages }}</span>
 
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">Следующий</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">Последний &raquo;</a>
+            {% if page_post.has_next %}
+                <a href="?page={{ page_post.next_page_number }}">Следующий</a>
+                <a href="?page={{ page_post.paginator.num_pages }}">Последний &raquo;</a>
             {% endif %}
         </div>
 
