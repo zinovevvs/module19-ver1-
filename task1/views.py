@@ -1,10 +1,26 @@
 from django.shortcuts import render, redirect
 from .forms import UserRegister
 from django.http import HttpResponse
-from .models import Buyer, Game, News
+from .models import Buyer, Game, News, Post
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+
+def post_list(request):
+    posts = Post.objects.all()
+    paginator = Paginator(posts, 3)
+    page_number = request.GET.get('page')
+
+    try:
+        page_posts = paginator.get_page(page_number)
+    except PageNotAnInteger:
+        page_posts = paginator.page(1)
+    except EmptyPage:
+        page_posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'first_task/post_list.html', {'page_posts': page_posts})
 
 
 # def registration_view(request):
