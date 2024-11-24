@@ -1,3 +1,4 @@
+
 >>> from task1.models import Buyer
 >>> buyer1 = Buyer.objects.create(name='Ilya', balance=1500.05, age=24)
 >>> buyer2 = Buyer.objects.create(name='Terminator2000', balance=42.15, age=52)
@@ -9,3 +10,38 @@
 >>> game1.buyers.set([buyer1, buyer2, buyer3])
 >>> game3.buyers.set([buyer1, buyer2])
 >>> game2.buyers.set([buyer1, buyer2, buyer3])
+
+hovework "Настраиваем СУБД postgre в django"
+python manage.py shell
+>>> all_posts = Post.objects.all()
+>>> print("Все посты:")
+Все посты:
+>>> for post in all_posts:
+...     print(post)
+...
+svwdnvwvhwi
+wdiwofwoiu
+Turbo
+New Title
+>>> specific_post = Post.objects.get(id=1)
+>>> print("\nПост с id=1:")
+>>> print(specific_post)
+Пост с id=1:
+svwdnvwvhwi
+>>> new_post = Post.objects.create(title='firm',content='new')
+>>> print("\nДобавленный пост:")
+
+Добавленный пост:
+>>> print(new_post)
+firm
+>>>
+>>> Post.objects.get(id=3).delete()
+(3, {'Удаляем пост с id=3': 3})
+>>> total_posts = len(Post.objects.all())
+>>> print("\nОбщее количество постов:", total_posts)
+
+Общее количество постов: 3
+>>>
+>>> filtered_count = len(Post.objects.filter(title__icontains='Turbo'))
+>>> print("Количество постов, содержащих 'Turbo':", filtered_count)
+Количество постов, содержащих 'Turbo': 1
